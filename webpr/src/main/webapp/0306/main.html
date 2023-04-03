@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+
+<style type="text/css">
+	
+	div{
+		border : 1px solid blue;
+		margin : 10px;
+		padding : 5px;
+		box-sizing: border-box;
+	}
+		 
+	#main1{
+		display: flex;
+		flex-direction: colmn
+	}
+	
+	header,aside,section,footer,article	{
+		border: 1px dotted blue;
+	    box-sizing:border-box; 
+	    padding:20px;
+	    margin : 5px;
+	}
+		  
+	header{
+		height: 100px;
+		vertical-align: middle;
+		display: flex;
+		background-color: darkgray;
+		align-items: center;
+	}
+	
+
+		  
+	nav{
+		width:100%;
+		height:65px;
+		background-color: darkslategray;
+		text-align: center;
+		vertical-align: middle;
+	}
+	nav ul{
+		display:flex;
+		margin: 0;
+		padding: 0;
+	}
+	nav ul li{
+		list-style-type: none;
+		margin: 2px 30px;
+		font-size: 25px;
+		margin-top: 10px;
+	}
+	nav ul li a {
+		text-align: center;
+		text-decoration: none;
+		color:white
+
+	}
+
+
+	#container{
+		display : flex;
+		height: auto;
+	}
+	
+	#left {
+		flex: 20%;
+		flex-shrink: 2;
+		height: 100%;
+		background-color: gray;
+	}
+
+	aside ul{
+		list-style-type: none;
+		margin: 0;
+		padding:0;
+		width: 200px;
+		background-color: #f1f1f1;
+	}
+
+	aside ul li{
+		list-style-type: none;
+	}
+	aside ul li a{
+		text-decoration: none;
+		width: 100%;
+		display: inline-block;
+		color: #000;
+		padding:8px 16px;
+	}
+	aside ul li a.active{
+		background-color: #4CAF50;
+		color: white;
+	}
+
+	list
+
+
+	#main{
+		flex:80%
+	}
+
+	#right {
+		flex: 20%;
+		background-color: darkgray;
+	}
+	
+	footer{
+		height: 50px;
+		text-align: center;
+		vertical-align: middle;
+		text-align:center;
+		font-weight: bold;
+		color: aliceblue;
+		background-color: black;
+		vertical-align: middle;
+		padding: 14px;
+	}
+	
+	  
+  
+
+</style>
+
+
+</head>
+<body>
+	<header>
+		<h1>
+			<img src="../images/카푸치노.jpg"  alt="이미지">
+			<a href="index.html">Web Shop</a>
+		</h1>
+	</header>
+	
+	<nav>
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">News</a></li>
+			<li><a href="#">My Account</a></li>
+			<li><a href="#">Contacts</a></li>
+		</ul>
+	</nav>
+	
+	<div id="container">
+		<aside id="left">
+			<ul>
+				<li><a href="#">컴퓨터</a></li>
+				<li><a href="#">의류</a></li>
+				<li><a href="#">음악</a></li>
+				<li><a href="#">영화</a></li>
+				<li><a href="#">스포츠/레져</a></li>
+				<li><a href="#">가구/인테리어</a></li>
+				<li><a href="#">식품</a></li>
+			</ul>
+		</aside>
+	
+		<section id="main">
+			<article id="article1">
+				<iframe>
+				</iframe>
+			</article>
+		</section>
+	
+		<aside id="right">
+			<div id="shopcart">
+				<h4>Shopping Cart</h4>
+				<p>현재 쇼핑카트에 물품이 없습니다.</p>
+				<a href="#">쇼핑카트보기</a>
+			</div>
+			<div id=login>
+				<h4>Log In</h4>
+				<form action="#" method="post">
+					<a>아이디</a>
+					<input type="text" name="id" id="id">
+					<a>비밀번호</a>
+					<input type="text" name="password" id="password">
+					<br><br>
+					<input type="submit">
+					<input type="reset">
+					<br><br>
+					<a href="#">회원가입</a>
+				     <a href="#">비밀번호 분실</a>
+				</form>
+			</div>
+	
+		</aside>
+	</div>
+	<footer>
+		제작자 박승우
+	</footer>	
+	
+
+</body>
+</html>

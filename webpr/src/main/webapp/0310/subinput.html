@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+
+<script type="text/javascript">
+	
+	proc1 = () => {
+		
+		// 입력한 값 가져오기
+		namevalue = document.getElementById('name').value;
+		
+		opener.document.getElementById('result2').innerHTML = namevalue;
+		
+		window.close();
+		
+		
+	}
+	
+	
+</script>
+
+</head>
+<body>
+
+
+<div class="box">
+   <p> 이름 입력 . 부모창의 id=result2요소에 출력한다.
+   </p>
+	<input type="text" id="name">
+   <input type="button" value="확인" onclick="proc1()">
+	<br><br>
+   <div class="result" id="result1"></div>
+</div>
+
+</body>
+</html>

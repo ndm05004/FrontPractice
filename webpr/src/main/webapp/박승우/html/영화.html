@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/iframe항목.css">
+
+<style type="text/css">
+	
+	.item{
+		width: 45%;
+		height: 45%
+	}
+</style>
+
+<script type="text/javascript">
+
+function playVideo(v){
+	
+	if( v == "video2"){
+		document.getElementById("video").innerHTML=`<iframe name="video2" width="560" height="315" src="https://www.youtube.com/embed/xM1CIQd_X4c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+
+	}else{
+		document.getElementById("video").innerHTML=`<iframe name="video1" width="560" height="315" src="https://www.youtube.com/embed/mKvQ_Rhf8Kc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+	}
+		
+}
+
+
+</script>
+
+</head>
+<body>
+
+<div id=video>
+
+</div>
+	
+
+<div id=container>
+	
+	<div class=item>
+		<img src="../images/영화1.jpg" id=video1 alt="이미지" onclick="playVideo('video1')">
+		<br><br>
+	</div>
+	
+	<div class=item>
+		<img src="../images/영화2.jpg" id=video2 alt="이미지" onclick="playVideo('video2')">
+		<br><br>
+	</div>
+	
+</div>
+</body>
+</html>

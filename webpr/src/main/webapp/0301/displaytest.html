@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+	p{
+		font-size: 2.0em;
+		background : yellow;
+		
+		display : none;
+	}
+</style>
+
+</head>
+<body>
+
+	<pre>
+		보이기 버튼을 클릭하면 태그가 보이고
+		감자기 버튼을 클릭하면 태그가 보이고
+	
+	</pre>
+
+	<p>무궁화 꽃이 피었습니다.</p>
+	
+	<button type="button" onclick\"proc2()>보이기</button>
+	
+	<button type="button" onclick\"proc1()>감추기</button>
+	
+	<script type="text/javascript">
+		function proc1() {
+			//p태그를 보이게 한다.
+			//p태그를 검색해야한다.
+			ptage = document.getElimentsByTageName('p');
+			
+			ptage[0].display = "blcok";
+			
+			
+		}
+		
+		function proc2(){
+			
+			var ptag
+			ptag[0].style.display -="none";
+		}
+	
+	</script>
+	
+</body>
+</html>

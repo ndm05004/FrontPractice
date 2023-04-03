@@ -1,0 +1,26 @@
+		//접근메소드 -  document.getElementById('id이름') id는 중복할 수 없어서 s가 안붙음
+				     document.getElementsByClassName('class이름')
+					 document.getElementByTagName('tag이름')
+					 document.getElementByName('name')  ----- 배열로 둘어옴  위까지
+			
+			         document.formname.요소name
+			
+			
+			
+					 쿼리셀렉터는 name 속성으로 접근할 수 없음
+			         document.querySelector('#이름')
+			         document.querySelector('.이름')
+			         document.querySelector('tag이름') ----- 단수로 들어옴
+			
+			         document.querySelectorAll('.이름')
+			         document.querySelectorAll('tag이름')
+출력
+innerHTML = str;
+출력하는 str속에 html태그가 포함되었을 경우
+
+			         
+innerText = str;			      
+출력하는 str속에 html태그가 포함되어있지 않을 경우
+
+   
+   

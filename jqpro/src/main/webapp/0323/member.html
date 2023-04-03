@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+
+<script type="text/javascript"src = "../js/jquery-3.6.4.min.js"></script>
+
+<script type="text/javascript">
+	
+$(function(){
+	   $('#member').on('click',function(){
+	   
+	      $.ajax({
+	         url : 'http://localhost/jqpro/0323/memberList.jsp', 
+	         type : 'get',
+	         success : function(res){
+	            //alert("성공");
+	            code = "<table border='1'>";
+	            code += "<tr><td>아이디</td><td>이름</td>";
+	            code += "<td>전화번호</td><td>이메일</td></tr>";
+	            
+	            $.each(res, function(i, v){
+	               code += "<tr><td>" + res[i].mem_id + "</td><td>" + v.mem_name + "</td>";
+	               
+	               code += "<td>" + v.mem_hp + "</td><td>" + v.mem_mail + "</td></tr>";    
+	               
+	            })
+	            
+	            code += "</table>"
+	            
+	            $('#result1').html(code);
+	            
+	         },
+	         //200에러 : view 확인 , 500에러 : 콘솔확인, 404에러 : url, view 에러
+	         error : function(xhr){
+	            alert("상태 : " + xhr.status);
+	         },
+	         dataType : 'json'
+
+	      })
+
+	   })
+
+	})
+	
+	
+</script>
+
+<style>
+table{
+	border : 1px solid blue;
+	
+	}
+td{
+	width : 150px;
+	height : 30px;
+	text-align: center;
+}
+	
+</style>
+
+</head>
+<body>
+
+
+<div class="box">
+   <p>
+   </p>
+
+   <input type="button" value="확인" id = "member">
+	<br><br>
+   <div class="result" id="result1"></div>
+</div>
+
+</body>
+</html>

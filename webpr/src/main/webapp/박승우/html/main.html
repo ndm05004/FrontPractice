@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+	
+	<link rel="stylesheet" href="../css/main.css">
+	
+  </head>
+  <body>
+    <header>
+      <h1>
+        <img src="../images/쇼핑백.jpg" alt="이미지" />
+        <a href="main.html">Web Shop</a>
+      </h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+    </nav>
+
+    <div id="container">
+      <aside id="left">
+      	<h3>카테고리</h3>
+        <ul>
+        
+          <li><a href="./computer.html" target="ifr">컴퓨터</a></li>
+          <li><a href="./clothing.html" target="ifr">의류</a></li>
+          <li><a href="./음악.html" target="ifr">음악</a></li>
+          <li><a href="./영화.html" target="ifr">영화</a></li>
+          <li><a href="./스포츠레저.html" target="ifr">스포츠/레져</a></li>
+          <li><a href="./가구인테리어.html" target="ifr">가구/인테리어</a></li>
+          <li><a href="./식품.html" target="ifr">식품</a></li>
+        </ul>
+      </aside>
+
+      <section id="main">
+          <iframe src="./computer.html" title="기본" name=ifr></iframe>
+      </section>
+
+      <aside id="right">
+        <div id="shopcart">
+          <h4>Shopping Cart</h4>
+          <p>현재 쇼핑카트에 물품이 없습니다.</p>
+          <button type="button" onclick="location.href='./shopcart.html' " class="buttons">쇼핑카트 보기</button>
+        </div>
+        <div id="login">
+          <h4>Log In</h4>
+          <form action="#" method="post">
+            <p>아이디</p>
+            <input type="text" name="id" id="id" placeholder="아이디" />
+            <p>비밀번호</p>
+            <input type="text" name="password" id="password" placeholder="비밀번호" />
+            <br/><br/>
+            <input type="submit"  class="buttons" value="로그인"/>
+            <input type="reset" class="buttons"  />
+            <br/><br/>
+            <button type="button" onclick="location.href='./회원가입.html' " class="buttons">회원가입</button>
+            <br/><br/>
+            <button type="button" onclick="location.href='./회원가입.html' " class="buttons">비밀번호 분실</button>
+            
+          </form>
+        </div>
+      </aside>
+    </div>
+    <footer>제작자 박승우</footer>
+  </body>
+</html>

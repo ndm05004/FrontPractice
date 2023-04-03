@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+
+<script type="text/javascript">
+
+$(function(){
+	
+	// 1. lprod의 리스트 가져오기 - select-option으로 출력
+	$.ajax({
+		url : "http://localhost/jqpro/0324/LprodController.jsp",
+		type : 'get', // res[i].gu, res[i].nm
+		success : function(res){
+			code ="";
+			$.each(res, function(i, v){
+				//option작성 lprod에
+				code += `<option value= "${v.lprod_gu}" > ${v.lprod_nm} </option>`; 
+			})
+			$('#Lprod').html(code);
+			$('#Lprod').trigger('change')
+		},
+		error : function(xhr){
+		},
+		dataType : 'json'
+	})
+	
+	// 2. lprod의 리스트중 하나를 선택하면 option의 value(lprod_gu)값을 가져온다.
+	// option의 value를 서버로 전송하여 prod리스트를 가져온다 - select-option으로 출력한다.
+	$('#Lprod').on('change', function(){
+		// option value(lprod_gu)값
+		vgu = $(this).val();
+		$.ajax({
+			url : 'http://localhost/jqpro/ProdNames.do',
+			type : 'post',
+			data : {"guValue" : vgu},
+			success : function(res){
+				code="";
+				
+				if(res.flag == "ok"){
+					
+					$.each(res.datas, function(i, v){
+						code += `<option value="${v.prod_id}"> ${v.prod_name} </option>`;
+					})
+					
+				}else{
+					code += `<option value="0">데이터 없음</option>`;
+					// result1번의 영역을 지운다.
+					
+					
+					$('#result1').empty();
+					
+					// 데이터 없음의 이미지를 출력
+					vimg = $('<img src="../images/spongebob.png" alt="spg">');
+					$('#result1').append(vimg);
+				}				
+				
+				$('#prod').html(code);
+				$('#prod').trigger('change');
+			},
+			error: function(xhr){
+				alert("상태 : "+xhr.status);
+			},
+			
+			dataType : 'json'
+		})
+	})
+	
+	
+	// 3. prod리스트중 하나를 선택하면 option의 value(prod_id)값을 가져온다.
+	// option의 value를 서버로 전송하여 prod_id와 일치하는 아이템의 상세보기를 출력
+
+	$('#prod').on('change', function() {
+			//option의 value(prod_id)값을 가져온다.'
+
+			idvalue = $(this).val().trim();
+			if(idvalue == "0"){
+				
+				return false;
+			}
+			
+			$.ajax({
+				data : {
+					"prodId" : idvalue
+				},
+				url : "/jqpro/ProdDetail.do",
+				type : 'post',
+				dataType : 'json',
+				error : function(xhr) {
+					alert("상태 : " + xhr.status);
+
+				},
+				
+				success : function(res) {
+					code = "<table border='1' class='table table-striped'>"
+					code += "<tr><td>PROD_ID</td>"
+					code += "<td>"+res.prod_id+"</td></tr>";
+					code += "<tr><td>PROD_LGU</td><td>"+res.prod_lgu+"</td></tr>";
+					code += "<tr><td>PROD_NAME</td><td>"+res.prod_name+"</td></tr>";
+					code += "<tr><td>PROD_PRICE</td><td>"+res.prod_price+"</td></tr>";
+					code += "<tr><td>PROD_COST</td><td>"+res.prod_cost+"</td><t/r>";
+					code += "<tr><td>PROD_BUYER</td><td>"+res.prod_buyer+"</td></tr>";
+					code += "<tr><td>PROD_SALE</td><td>"+res.prod_sale+"</td></tr>";
+					code += "<tr><td>PROD_OUTLINE</td><td>"+res.prod_outline+"</td></tr>";
+					code += "</table>"
+					
+					$('#result1').html(code);
+				}
+			})
+
+			//prod_id와 일치하는 아이템의 상세보기를 출력
+
+		})
+
+	})
+</script>
+
+<style>
+	form{
+		box-sizing: border-box;
+		border : 1px solid blue;
+		margin : 10px auto;
+		padding : 10px;
+		width : 100%;
+	}
+	img{
+		width : 50%;
+		height : 50%;
+	}
+	
+
+	
+</style>
+
+</head>
+<body>
+
+
+<div class="box">
+   <p>
+   </p>
+
+  	<form>
+    <label for="sel1" class="form-label">LPROD</label>
+    <select class="form-select" id="Lprod" name="sellist1">
+
+    </select>
+    </form>
+    <br>
+	<form>
+    <label for="sel1" class="form-label">PROD</label>
+    <select class="form-select" id="prod" name="sellist1">
+
+    </select>
+    </form>
+	
+   <div class="result" id="result1"></div>
+</div>
+
+</body>
+</html>

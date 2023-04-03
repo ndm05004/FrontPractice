@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+
+    <link rel="stylesheet" href="../css/mystyle.css" />
+
+    <script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+	
+    <script type="text/javascript">
+    // 값이 필요할땐 attr
+    // 속성을 제어할 땐 prop(true, false 실행 상태 등)
+      $(function () {
+     	 $("#btn1").on("click", function () {
+          //$('img').attr("title", '그림1');
+          $("img").attr("title", function () {
+            // 해당 img의 src의 값을 가져온다
+            vsrc = $(this).attr("src");
+
+            // 이름 부분을 추출한다 slice
+            start = vsrc.lastIndexOf("/") + 1;
+            end = vsrc.lastIndexOf(".");
+
+            //slice(start, end)
+            vtitle = vsrc.slice(start, end);
+
+            return vtitle;
+          });
+          
+          $("img").on("click", function(){
+        	  
+        	  $(this).removeAttr('title');
+        	  
+          })
+          
+          
+        });
+     	 
+     	 
+     	 
+      });
+    </script>
+
+    <style type="text/css">
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <p></p>
+
+      <input type="button" value="확인" id="btn1" />
+      <br /><br />
+      <div class="result" id="result1">
+        <img src="../images/jQuery.jpg" alt="jQuery.jpg" />
+        <img src="../images/spongebob.png" alt="spongebob.png" />
+        <img src="../images/gsjLogo1.png" alt="gsjLogo1.png" />
+        <img src="../images/coffee1.jpg" alt="coffee1.jpg" />
+        <img src="../images/Desert.jpg" alt="Desert.jpg" />
+      </div>
+    </div>
+  </body>
+</html>

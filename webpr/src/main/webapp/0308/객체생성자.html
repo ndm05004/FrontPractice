@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+<script src="../js/rectprint.js"></script>
+
+
+<script type="text/javascript">
+//객체 함수 선원 정의
+	
+	function Myrect(width, height) {
+	 this.width = width;
+	 this.height = height;
+	 
+	 return this.getArea = function(){ 
+		return  this.width* this.height 	 
+	 };
+	 
+	 this.getCircum = function(){
+			return (parseInt(this.width) + parseInt(this.height)) * 2;
+
+	 }
+}	
+	
+	proc1 = () => {
+		//빈객체에 속성 추가
+		
+		my = new Myrect(12, 45);
+		my.name = "사각형";
+		
+		printInfo(my, 'result1');
+		
+		
+	}
+	
+</script>
+
+
+</head>
+<body>
+
+
+<div class="box">
+   <p>
+   </p>
+
+   <input type="button" value="확인" onclick="proc1()">
+	<br><br>
+   <div class="result" id="result1"></div>
+</div>
+
+</body>
+</html>

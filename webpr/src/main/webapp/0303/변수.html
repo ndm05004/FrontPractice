@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	
+	#result{
+		border : 1px solid black;
+		width: 500px;
+		height: 200px;
+		padding: 20px;
+	}
+	
+</style>
+
+<script type="text/javascript">
+	
+	function sub(a,b){
+		res = a - b;
+	}
+	
+	function add(a,b){
+		
+		var ares = a+b;
+		return ares;
+	}
+	
+	window.onload = function(){
+		
+		/*
+		sub(10,4);
+		var ares = add(10,4);
+		vres = document.getElementById('result');
+		
+		vres.innerHTML = "10 - 4 = " + res+ "<br>" +"10 + 4 = " + ares;
+		*/
+		sub(10,4);
+		document.getElementById('result').innerHTML = "10 - 4 = " + res + "<br>";
+		document.getElementById('result').innerHTML += "10 + 4 = " + add(10,4) + "<br>";
+		
+	
+	}
+
+
+</script>
+
+</head>
+<body>
+	<div id="result">
+		
+	</div>
+</body>
+</html>

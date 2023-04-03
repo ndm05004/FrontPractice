@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+     #container {
+     	
+        display: flex;
+        height: auto;
+        width: auto;
+        background-color: #e9ecef;
+		justify-content:center;
+       
+      }
+      
+      .item{
+      	border: 1px solid black;
+      	margin: 3px;
+ 		text-align: center;
+      }
+      
+      img{
+      	width: 250px;
+      	height: 250px;
+      }
+      
+      span{
+      	font-weight: bold;
+      	font-size: 1.3em;
+      }
+      

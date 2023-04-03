@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+	
+	table{
+		margin: auto;
+		border: 3px solid gray;
+		border-collapse: collapse;
+	}
+	
+	th{
+		height : 50px;
+		font-size: 1.2em;
+	}
+	
+	td{
+		width : 300px; 
+		height : 50px;
+		text-align: center;
+	}
+	
+	td input{
+		font-size: 1.1em;
+		width : 280px; 
+		height : 45px;
+		text-align: center;
+	}
+	
+	caption{
+		margin-bottom: 30px;
+		font-weight: bold;
+		font-size: 1.8em;	
+	}
+	
+	.buttons{
+		display: block;
+		text-align: center;
+	}
+	
+
+</style>
+
+
+</head>
+<body>
+<div class ="continer">
+	<table border="1">
+		<caption>장바구니 페이지</caption>
+		<tr>
+			<th>품목</th>
+			<th>가격</th>
+			<th >수량</th>
+			<th>합계</th>
+		</tr>
+		
+		<tr>
+			<td>컴퓨터세트</td>
+			<td>2,000,000원</td>
+			<td><input type="number" name="수량" id="quantity1" placeholder="0" /></td>
+			<td><input type="number" name="합계" id="sum1" placeholder="0" /></td>
+		</tr>
+		
+		<tr>
+			<td>티셔츠</td>
+			<td>50,000원</td>
+			<td><input type="number" name="수량" id="quantity2" placeholder="0" /></td>
+			<td><input type="number" name="합계" id="sum2" placeholder="0" /></td>
+		</tr>
+		
+		<tr>
+			<td>음악파일</td>
+			<td>1,000원</td>
+			<td><input type="number" name="수량" id="quantity3" placeholder="0" /></td>
+			<td><input type="number" name="합계" id="sum3" placeholder="0" /></td>
+		</tr>
+		
+		<tr>
+			<td>영화파일</td>
+			<td>5,000</td>
+			<td><input type="number" name="수량" id="quantity4" placeholder="0" /></td>
+			<td><input type="number" name="합계" id="sum4" placeholder="0" /></td>
+		</tr>
+	</table>
+	<br><br>
+	
+	<div class="buttons">
+		<button>계산</button>
+		<button>구매</button>
+		<input type="reset">
+	</div>
+</div>
+</body>
+</html>

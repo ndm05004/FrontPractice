@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+
+<script>
+	
+	proc1= () => {
+		
+		//배열선언
+		const arr = [];
+		//const arr = new Array();
+	
+		flag = true;
+		
+		while(true){
+			
+			//입력
+			userName = prompt("이름입력 ") // trim 앞뒤의 공백제거
+			
+			//입력값 비교 - break;
+			if(userName != null){
+				if(userName.trim().length < 1){
+					flag = false;
+				}
+			}
+			
+			if(userName == null) flag = false;
+			
+			if(!flag) break;
+			
+			//배열에 저장
+			arr.push(userName);
+		}
+		//출력
+		document.getElementById('result1').innerHTML=arr;
+	}
+	
+	
+	
+	proc2= () => {
+		
+		const num = new Array();
+		
+		while(true){
+			
+			//입력
+			input = prompt("숫자입력");
+				
+			idx = num.indexOf(input);
+			
+			//입력값 비교 indexOf() -1일때 저장한다.
+			if(idx==-1){
+				num.push(input);
+			}
+			
+			//배열갯수비교 - break;
+			if(num.length>=5){
+				break;
+			}
+			
+		}
+		document.getElementById('result2').innerHTML=num;
+		
+	}
+	
+</script>
+
+</head>
+<body>
+
+<div class="box">
+   <p>prompt()를 이용하여 이름을 계속 입력 받아 배열에 저장하고 출력하는 프로그램 <br>
+	중복x
+   </p>
+
+   <input type="button" value="확인" onclick="proc2()">
+	<br><br>
+   <div class="result" id="result2"></div>
+</div>
+
+
+<div class="box">
+   <p>prompt()를 이용하여 이름을 계속 입력 받아 배열에 저장하고 출력하는 프로그램 <br>
+
+   </p>
+
+   <input type="button" value="확인" onclick="proc1()">
+	<br><br>
+   <div class="result" id="result1"></div>
+</div>
+
+</body>
+</html>

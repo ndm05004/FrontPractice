@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+<script src = "../js/jquery-3.6.4.min.js"></script>
+
+<script type="text/javascript">
+
+	function proc1(){
+		ptag = $('<p class ="pp" onclick="pclick(this)">Hello jQuery</p>');
+		$('#result1').append(ptag);
+		
+		$(ptag).appendTo($('#result1'));
+	}
+	
+	function pclick(pel){
+		pel.style.background = "yellow";
+		
+		$(pel).css('color','blue');
+	}
+	
+	function proc2(){
+		// p태그는 닫는 태그를 안써줘도 됨, 중괄호안에 프로퍼티스를 쓴다, key:value형태로 들어감
+		ptag = $("<p/>", {
+			"class" : "pp2",
+			"text"  : "Hello jQuery",
+			"click" : function(){
+				$(this).css('background', 'pink');	
+			}
+		
+		})
+		$('#result2').append(ptag);
+	}
+	
+	function proc3(){
+		ptag = $("<p/>", {
+			"class" : "pp2",
+			"text"  : "Hello jQuery"
+		})
+		
+		$('#result3').append(ptag);
+	}
+	
+	
+	$(document).ready(function(){
+		
+		//#pp2가 실행후에 동적으로 새롭게 생성된 요소이고, 새로운 요소의 이벤트
+		/* $('.pp2').on('click', function(){
+			alert("hello")		
+		}) */ 
+		// 새롭게 생성된 요소는 선택자가 될 수 없다.
+		
+		// 새롭게 생성된 요소는 document로 시작하는 핸들러를 줘야함
+		$(document).on('click', '.pp2', function(){
+			alert("hello")
+		})
+		
+	})
+		
+	
+	function proc4(){
+		
+		imgs = ["../images/coffe1.jpg", "../images/image.2.jpg",
+			"../images/gsjLogo1.png", "../images/img4.jpg",
+			"../images/jQuery.jpg", "../images/Anne-Marie(앤마리)-2002.jpg",
+			"../images/Coca-Cola-logo.png", "../images/ccc.jpg",
+			"../images/gsjLogo1.png", "../images/국화9.jpg"]
+		
+		rand = parseInt(Math.random() * imgs.length);
+		
+		valt = imgs[rand];
+		start = valt.lastIndexOf("/")+1;
+		end = valt.lastIndexOf(".");
+		valt = valt.slice(start, end);
+		
+		
+		
+		vimg = $('<img>', {
+			"src" : imgs[rand],
+			"alt" : valt,
+			"class" : "image"
+		})
+		
+		$('#result4').append(vimg);
+	}
+	
+	// 새롭게 생성된 요소는 document로 시작하는 핸들러를 줘야함
+	$(document).on('click', '.image', function(){
+		$(this).css('border', '3px solid red');
+	})
+	
+	
+</script>
+
+<style>
+
+	img{
+		width : 100px;
+		height : 100px;
+		margin : 5px;		
+	}
+
+</style>
+
+</head>
+<body>
+
+
+<div class="box">
+   <p>
+   	 새로운 요소를 생성한다.<br>
+   	 $(html문장)을 쓰면 새로운 요소를 만듬<br>
+   	 ex) 변수 = $(html문장)<br>
+   	 $('#result1').append(ptag)<br>
+   	 
+     ptag = $('&lt;p class ="pp" onclick="pclick(this)">Hello jQuery&lt;/p>');
+   </p>
+
+   <input type="button" value="확인" onclick="proc1()">
+	<br><br>
+   <div class="result" id="result1"></div>
+</div>
+
+
+
+
+<div class="box">
+   <p>
+   	 새로운 요소를 생성한다.<br>
+   	 $('태그이름', { 속성들 }) key : value 형식으로 옴<br>
+   	 
+		ptag = $("&lt;p/>", {<br>
+		"class" : "pp2",<br>
+		"text"  : "Hello jQuery",<br>
+		"click" : function(){<br>
+		$(this).css('background', 'pink');	<br>
+			}
+		
+		})
+   	 
+   </p>
+
+   <input type="button" value="확인" onclick="proc2()">
+	<br><br>
+   <div class="result" id="result2"></div>
+</div>
+
+
+
+<div class="box">
+   <p>
+   	 새로운 요소를 생성한다.<br>
+   </p>
+
+   <input type="button" value="확인" onclick="proc3()">
+	<br><br>
+   <div class="result" id="result3"></div>
+</div>
+
+
+
+<div class="box">
+   <p>
+   	 새로운 요소를 생성한다.<br>
+   </p>
+
+   <input type="button" value="이미지 만들기" onclick="proc4()">
+	<br><br>
+   <div class="result" id="result4"></div>
+</div>
+
+
+
+</body>
+</html>

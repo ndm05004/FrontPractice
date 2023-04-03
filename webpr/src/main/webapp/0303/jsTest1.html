@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+	div{
+		border: 1px solid blue;
+		width: 500px;
+		height: 150px;
+		padding: 20px;
+	}
+
+</style>
+
+<script type="text/javascript">
+
+function proc1(){
+	var today = new Date();
+	
+	var day1 = today.toLocaleString();
+	
+	/*
+	document.write(day1+ "<br>");
+	document.write(today + "<br>");
+	*/
+	
+	
+	//textarea에 출력 - 검색
+	
+	var text = document.getElementsByTagName('div');
+	text[0].innerHTML = today +"<br>" + day1 + "<br>";
+	
+}
+</script>
+
+</head>
+<body>
+
+<input type="button" value="할인" onclick="proc1()">
+
+<div>
+
+</div>
+<br><br>
+
+
+
+</body>
+</html>

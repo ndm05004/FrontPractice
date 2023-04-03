@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+	
+</style>
+
+<script type="text/javascript">
+		proc1 = function() {
+		
+		// 입력 - 숫자 2개, 연산자 1개
+		su1 = parseInt(prompt("수1 입력"));
+		su2 = parseInt(prompt("수2 입력"));
+		op = prompt("연산자 입력");	
+		// 비교 - 연산자 - 계산처리
+		
+		switch(op){
+		case "+" :
+			res = su1 + su2;
+			break;
+		case "-" :
+			res = su1 - su2;
+			break;
+		case "*" :
+			res = su1 * su2;
+			break;
+		case "/" :
+			res = su1 / su2;
+			break;
+		}
+		
+		// 출력 = 34 - 23 = 11
+		
+		str = su1+ " " + op+ " "+su2 + " = " +res;
+		str = `${su1} ${op} ${su2} = ${res}`;
+		//id=result인 요소를 검색
+		document.getElementById('result').innerHTML = str;	
+	}
+
+function proc2(){
+	
+	//입력
+	su = prompt("수 입력", "1~100사이로 입력")
+	
+	
+	//점수 비교
+	switch(parseInt=su/10){
+	case 10: case 9:
+		res = "A";
+		break;
+	case 8:
+		res = "B";
+		break;
+	case 7:
+		res="C"
+		break;
+	case 6: 
+		res="D"
+		break;	
+	default:
+		res="F";
+		break;
+	//출력
+	
+	str="점수 = " + su + "<br>";
+	str +="학점" + res + "br";
+	
+	document.getElementBysId('result2').innerHTML = str;	
+	
+}
+}
+	
+
+proc3 = function() {
+		
+	//입력
+	first = prompt("첫번째 입력");
+	second = prompt("두번째 입력");
+	
+	//비교
+	if(first == second){
+			res ="비겼습니다."
+	}
+	
+	if(first == "가위"  && second == "보"
+	  || first =="바위" && second == "가위"
+	  || first =="보" && second == "바위"){
+		res="첫번째 사람 이김"
+	}else{
+		res="두번째 사람 이김"
+	}
+	//출력
+	
+	str = `첫번째 사람 ${first} <br> `;
+	str += `두번째 사람 ${second} <br>`;
+	str += `결과 ${res}`;
+	
+	document.getElementById('result3').innerHTML = str;
+}
+	
+</script>
+
+
+
+</head>
+<body>
+
+
+<div class="box">
+	<p>숫자 2개와 연산자 1개를 입력받아 연산자에 맞는 계산결과를 출력</p>
+	입력: prompt
+	출력: div 요소 이용 - innerHTML / innerText <br>
+	
+	백틱을 이용한 출력내용 - 템플릿 리터럴 <br>
+	일반 문자열의 + 기호와 " " 를 쓰지 않고 단순하게 처리<br>
+	변수를 표현할 때는 ${변수}<br>
+	<br>
+	<input type="button" value="확인" onclick="proc1()"><br><br>
+	<div class="result" id="result">
+	
+	</div>
+</div>
+
+<div class="box">
+	<p>점수를 입력받아 학점을 출력하시오</p>
+	입력: prompt
+	
+	점수가 99~90 이면 'A'<br>
+	점수가 89~80 이면 'B'<br>
+	점수가 79~70 이면 'C'<br>
+	점수가 69~60 이면 'D'<br>
+	점수가 59~0 이면 'F'<br>
+	
+	출력: div 요소 이용 - innerHTML / innerText <br>
+	
+	백틱을 이용한 출력내용 - 템플릿 리터럴 <br>
+	일반 문자열의 + 기호와 " " 를 쓰지 않고 단순하게 처리<br>
+	변수를 표현할 때는 ${변수}<br>
+	<br>
+	<input type="button" value="확인" onclick="proc2()"><br><br>
+	
+	<div class="result" id="result2">
+	
+	</div>
+</div>
+
+
+
+
+<div class="box">
+	<p>두 살마의 가위바위보</p>
+	입력: prompt
+	
+	출력: div 요소 이용 - innerHTML / innerText <br>
+	
+	백틱을 이용한 출력내용 - 템플릿 리터럴 <br>
+
+	<br>
+	<input type="button" value="확인" onclick="proc3()"><br><br>
+	
+	<div class="result" id="result3">
+	
+	</div>
+</div>
+
+
+
+
+</body>
+</html>

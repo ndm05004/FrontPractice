@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style >
+	div{
+		margin : 10px;
+	}
+	
+</style>
+
+<script type="text/javascript">
+	
+	function proc1(op) {
+		//id가 first와 second 입력요소를 검색
+		vfirst = parseInt(document.getElementById('first').value);
+		vsecond = parseInt(document.querySelector('#second').value);
+		
+		
+		//값을 가져온다
+		//계산
+		switch(op){
+		case '+':
+			res = vfirst + vsecond;
+			break;
+		
+		case '-':
+			res = vfirst - vsecond;
+			break;
+		
+		case '*':
+			res = vfirst * vsecond;
+			break;
+		
+		case '/':
+			res = vfirst / vsecond;
+			break;
+		default :
+			res = "입력 오류 입니다";
+			break;
+		
+		}
+		
+		//출력요소를 검색 - 결과값을 출력요소에 출력
+		document.getElementById('result').value = res;
+		document.getElementById('dres').innerHTML = res;
+		
+
+	}
+
+</script>
+
+
+</head>
+
+<body>
+
+첫번째 수 <input type="text" id="first"> <br>
+첫번째 수 <input type="text" id="second"> <br>
+<br>
+
+<input type="button" value="+" onclick="proc1('+')">
+<input type="button" value="-" onclick="proc1('-')">
+<input type="button" value="*" onclick="proc1('*')">
+<input type="button" value="/" onclick="proc1('/')">
+<br><br>
+결과 <br>
+<input type="text" id="result"><br><br>
+<div id="dres"></div>
+
+
+</body>
+</html>

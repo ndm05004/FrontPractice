@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+
+<script type="text/javascript">
+	
+	let rand = parseInt(Math.random() * 100 +1);
+	let count =0;
+	let input1="";
+	
+	proc1 = () => {
+		
+		// 입력한 값을 가져오기, id=su인 input 요소를 검색
+		count ++;
+		input = document.getElementById('su').value;
+		input1 += input+" "
+		// 비교
+		// 입력한 값과 발생한 난수 rand 같은지 
+		// 같은냐? res = "정답입니다"
+				
+		// 작으냐? res = "더 큰 수 입력"
+				
+		// 크냐? res ="더 작은 수 입력"
+				
+				
+		if(rand == input){
+			res = "정답입니다"+ "<br>";
+			res += "발생난수 " + rand+ "<br>";
+			res += input1 + "<br>";
+			res += "입력횟수: "+ count+"회";
+		}else if(rand>input){
+			res = "더 큰 수 입력";
+		}else if(rand<input){
+			res ="더 작은 수 입력";
+		}
+		
+				
+		// 출력 res
+		document.getElementById('result1').innerHTML =res+ "<br>"; 
+			
+	}
+	
+	
+	proc2 = () => {
+
+		lotto = [];
+			
+		while(true){
+			
+			rand2 = parseInt(Math.random() * 45 +1);
+			
+			if(lotto.indexOf(rand2)==-1){
+				lotto.push(rand2);
+			}
+			
+			if(lotto.length == 6){
+				break;
+			}
+		}
+		
+		document.getElementById('result2').innerHTML = lotto;
+	}
+
+	
+	
+	
+	
+	
+</script>
+
+</head>
+<body>
+
+
+<div class="box">
+   <p> 1~100사이의 난수를 발생하고 <br> 
+   1부터 100 사이 숫자 입력해서 맞추기
+   </p>
+   <input type ="text" id="su" >
+   <input type="button" value="확인" onclick="proc1()">
+	<br><br>
+   <div class="result" id="result1"></div>
+</div>
+
+
+<div class="box">
+   <p> 로또 번호를 생성하는 프로그램, 배열에 저장 <br> 
+   	   1번 ~ 45번 중 6개의 번호를 추첨. 중복은 되지 않도록 한다.
+   </p>
+   <input type="button" value="확인" onclick="proc2()">
+	<br><br>
+   <div class="result" id="result2"></div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+
+<script type="text/javascript">
+	
+	// window.onload= function()
+	$(function(){
+		
+		$('#visible').on('click', function(){
+			str ="";
+			$('#result1 p:visible').each(function(){
+				str+=$(this).text() + "<br>" 
+			})
+			
+			//visi = ($('#result1 p:visible').text());
+			$('.visible').html(str);					   
+		})
+		
+		$('#hidden').on('click', function(){
+		
+			hid = ($('#result1 p:hidden').text());
+			$('.hidden').html(hid);					   
+		})
+		
+	})
+
+</script>
+
+<style type="text/css">
+
+	.visible, .hidden{
+		height: 50px;
+	}
+	
+</style>
+
+</head>
+<body>
+
+
+<div class="box">
+   <p>
+   </p>
+
+   <input type="button" value="visible" id="visible">
+   <input type="button" value="hidden" id="hidden">
+	<br><br>
+  
+   <div class="result" id="result1">
+   		<p> 보이는 문단</p>
+		<p style="visibility:hidden;">숨겨진 문단</p>
+		<p style="display:none;"> 자리를 차지 하지 못한 문단 </p>
+		<p style="opacity:0;"> 투명한 문단</p>
+		<hr/>
+   </div>
+   
+   <div class="visible"></div>
+   <div class="hidden"></div>
+   
+</div>
+
+</body>
+</html>

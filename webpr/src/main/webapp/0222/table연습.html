@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+		table {
+			/*margin : 100px, 50px;*/ /*값 두개를 주면 상하, 좌우 묶어서 적용*/
+			/*margin : 100px,  200px, 50px;*/ /*1. top, 2.좌우, 3.bottom*/
+			/*값이 4개라면 시계방향으로 값을 넣음 1. top, 2.right, 3.bottom, 4. left*/
+			border : 2px solid purple;
+			/*가운데로 주는 법*/
+			margin: 100px auto;
+			border-collapse: collapse;
+		}
+	
+		td{
+			width : 300px; 
+			height : 50px;
+		}
+		
+		th{
+			width : 300px;
+			height: 50px;
+		}
+		
+		caption {
+			border : 2px;
+			font-size: 30px;
+			margin: 100px auto;
+			font-weight: bold;
+			letter-spacing: 40px; /*글자 간격 주는 방법*/
+			
+			/*caption-side: bottom*/
+			
+		}
+		
+	
+	</style>
+</head>
+<body>
+
+	<table border="1">
+		<caption>
+			시&nbsp;&nbsp;간&nbsp;&nbsp;표
+		</caption>
+		<tr>
+			<th colspan ="2"></th>
+			<th colspan ="2"></th>
+			<th></th>
+			<th></th>						
+		</tr>
+		
+		<tr>
+			<td colspan ="4"></td>
+			<td colspan ="2"></td>
+		</tr>
+		
+		<tr>
+			<td colspan ="4"></td>
+			<td colspan ="2" rowspan="2"></td>
+		</tr>
+		
+		<tr>
+			<td></td>	
+			<td></td>	
+			<td></td>	
+			<td></td>	
+		</tr>
+	
+	</table>
+
+</body>
+</html>

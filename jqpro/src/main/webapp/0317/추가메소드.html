@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.4.min.js"></script>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+
+<script type="text/javascript">
+	
+	$(function(){
+		$('#append').on('click', function(){
+			vimg = $('<img src="../images/Hydrangeas.jpg" alt="Hydrangeas.jpg">');
+			
+			//$(vimg).appendTo($('#result1'));
+			//$(vimg).appendTo($('#p1'));
+			$('#p1').append(vimg);
+		})
+		
+		
+		$('#prepend').on('click', function(){
+			vimg = $('<img src="../images/coffee1.jpg" alt="coffee1.jpg">');
+			
+//			$(vimg).prependTo($('#result1'));
+			//$(vimg).prependTo($('#p1'));
+			$('#p1').prepend(vimg);
+		})
+		
+		
+		$('#before').on('click', function(){
+			vimg = $('<img src="../images/coffee1.jpg" alt="coffee1.jpg">');
+			
+			$(vimg).insertBefore($('#p2'));
+		})
+		
+		$('#after').on('click', function(){
+			vimg = $('<img src="../images/coffee1.jpg" alt="coffee1.jpg">');
+			
+			$(vimg).insertAfter($('#p2'));
+		})
+		
+		
+		$('.pp').on('click', function(){
+			
+			tvalue = $(this).attr('title');
+			vimg = $('<img src="../images/' + tvalue + '.jpg" alt="coffee1.jpg">');
+			$(this).append(vimg);
+		})
+		
+		
+	})
+	
+</script>
+
+<style>
+
+	img{
+		 width : 50px;
+		 height : 50px;
+	}
+	
+	p{
+		/* border : 1px solid green; */
+		padding : 5px;
+	
+	}
+
+</style>
+
+</head>
+<body>
+
+
+<div class="box">
+   <p>
+   	버튼을 클릭하면 이미지를 이미지를 만들어서 id="result1" 요소에 추가한다.<br>
+   	append/appendTo<br>
+   	prepend/prependTo<br>
+   	
+   </p>
+
+   <input type="button" value="뒤로 추가" id="append">
+   <input type="button" value="앞으로 추가" id="prepend">
+	<br><br>
+   <div class="result" id="result1"></div>
+   <p class="pp" title="코알라" id="p1">코알라</p>
+</div>
+
+
+<div class="box">
+   <p>
+   	이미지를 만들어서 id="result2" 요소에 추가한다.<br>
+   	before/insertBefore<br>
+   	after/insertAfter<br>
+   </p>
+
+   <input type="button" value="앞으로 추가" id="before">
+   <input type="button" value="뒤로 추가" id="after">
+	<br><br>
+   <div class="result" id="result1"></div>
+   <p class="pp" title="코알라" id="p2">코알라</p>
+   <p class="pp" title="단풍">단풍</p>
+   <p class="pp" title="국화">국화</p>
+</div>
+
+
+</body>
+</html>

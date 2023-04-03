@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script type="text/javascript">
+
+/* function proc1(op){
+	
+	this; // proc1()함수를 호출한 button 객체
+		
+}
+
+proc1 = function(op){
+	
+	this //: proc1()함수를 호출한 button 객체
+		
+}
+ */
+ 
+proc1 = (op) =>{
+	
+	// this // 람다 함수, 현재 함수 자체 this를 쓸때는 람다 함수를 쓰면 안됨
+	
+	// 입력한 값 가져오기 - 각 id를 검색
+	fvalue = document.getElementById('first').value.trim();
+	svalue = document.getElementById('second').value.trim();
+	
+	
+	// 정규식 /^ $/ -> ~시작해서 ~ 끝난다는 뜻
+	freg = /^[0-9]+$/;
+	sreg = /^[0-9]+$/;
+	
+		 
+	// op를 비교
+	
+	switch (op) {
+	case "+":
+		res = add();
+		break;
+		
+	case "-":
+		res = minus();
+		break;
+		
+	case "*":
+		res = multiple();
+		break;
+		
+	case "/":
+		res = divide();
+		break;
+		
+	default:
+		break;
+	}
+	
+	document.getElementById('result1').innerHTML=res;
+	
+	
+	if(freg.test(fvalue) && sreg.test(svalue)){	
+	}else{
+		alert("데이터가 올바르지 않습니다."); 
+}
+		
+}
+
+
+
+add = () => {
+	return parseInt(fvalue) + parseInt(svalue);
+}
+
+minus = () => {
+	return fvalue - svalue;
+}
+
+divide = () => {
+	return fvalue / svalue;
+}
+
+multiple= () => {
+	return fvalue * svalue;
+}
+
+
+</script>
+
+</head>
+<body>
+<div class="box">
+   <p>
+   </p>
+	첫번째수 <input type="text" id="first" ><br>
+	두번째수 <input type="text" id="second"><br>
+
+   <input type="button" value="+" onclick="proc1('+')">
+   <input type="button" value="-" onclick="proc1('-')">
+   <input type="button" value="/" onclick="proc1('/')">
+   <input type="button" value="*" onclick="proc1('*')">
+	<br><br>
+   <div class="result" id="result1"></div>
+</div>
+
+</body>
+</html>

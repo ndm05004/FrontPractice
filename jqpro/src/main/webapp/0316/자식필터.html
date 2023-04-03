@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+
+<script type="text/javascript">
+
+
+	function proc1(){
+		
+/* 		$('tr:first-child').css('background', '#ff98aa');
+		$('tr:nth-child(2)').css('background', '#f08EB1');
+		$('tr:nth-child(3)').css('background', '#FFDCFF');
+		$('tr:last-child').css('background', '#FFF0F5');
+		
+		$('tr:first-child').css('background', 'black'); */
+		
+		
+		$('td:first-child').css('background', '#ff98aa');
+		$('td:nth-child(2)').css('background', '#f08EB1');
+		$('td:nth-child(3)').css('background', '#FFDCFF');
+		$('td:last-child').css('background', '#FFF0F5');
+		
+		$('tr:first-child td').css('background', 'black'); 
+		
+	}
+	
+	
+</script>
+
+<style>
+
+	table{
+		border : 1px solid blue;
+	}
+	
+	td{
+		width: 250px;
+		height: 50px;
+	}
+
+</style>
+
+</head>
+<body>
+
+
+<div class="box">
+   <p>
+   </p>
+
+   <input type="button" value="확인" onclick="proc1()">
+	<br><br>
+   <div class="result" id="result1">
+		<table border="1">
+		
+			<tr>
+				<td>일</td>
+				<td>이</td>
+				<td>삼</td>
+				<td>사</td>
+			</tr>
+		
+			<tr>
+				<td>일</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>일</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>일</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</table>
+   </div>
+</div>
+
+</body>
+</html>
