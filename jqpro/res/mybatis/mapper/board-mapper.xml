@@ -16,26 +16,19 @@
 	</where>
 </sql>
 
+
 <!-- 글쓰기 -->    
 <insert id="insertBoard" parameterType="boardVo">
-
+	insert into boardtab(
+			num, subject, writer, mail, password, content, hit, wip, wdate
+	)values(
+			boardtab_num_seq.nextval,
+			#{subject}, #{writer}, 
+			#{mail}, #{password},
+			 #{content}, 0, 
+			 #{wip}, sysdate
+	)
 </insert>
-
-<!-- 글삭제 -->    
- <delete id="deleteBoard" parameterType="int">
- 
- </delete>
- 
-<!-- 글수정-->    
-<update id="updateBoard" parameterType="boardVo">
-
-
-</update>
-	
-<!-- 조회수 증가-->    
-<update id="updateHit" parameterType="num">
-
-</update>
 	
 <!-- 전체 글 갯수 구하기 -->
 <select id="totalCount" parameterType="map" resultType="int">
@@ -51,27 +44,12 @@
           <include refid="dynamicCondition"/> 
                order by  num desc) B 
     <![CDATA[
-          where rownum <= #end#) A
-       where A.rnum >= #start# 
+          where rownum <= #{end}) A
+       where A.rnum >= #{start}
      ]]> 
 </select>	
 
 <!-- 댓글 쓰기 -->
-<insert id="insertReply" parameterType="replyVo">
-
-</insert>
-	
-<!-- 댓글 수정 -->
-<update id="updateReply" parameterType="replyVo">
-
-</update>
-	
-<!-- 댓글 삭제 -->
-<delete id="deleteReply" parameterType="int">
-
-</delete>
-
-<!--  -->
 
 
 

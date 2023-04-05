@@ -11,8 +11,8 @@ public class PageVO {
 	private int totalPage;
 	private int count;
 	
-	private static int perList = 3;
-	private static int perPage = 2;
+	private static int perList = 5;
+	private static int perPage = 3;
 	
 	
 	
