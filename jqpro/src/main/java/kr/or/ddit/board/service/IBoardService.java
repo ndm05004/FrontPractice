@@ -41,4 +41,7 @@ public interface IBoardService {
 	// 전체글 갯수 구하기
 	public int totalCount(Map<String, Object> map);
 	
+	// 댓글 리스트
+	public List<ReplyVO> selectReply(int bonum);
+	
 }

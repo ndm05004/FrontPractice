@@ -37,4 +37,6 @@ public interface IBoardDao {
 	
 	// 전체글 갯수 구하기
 	public int totalCount(Map<String, Object> map);
+	
+	public List<ReplyVO> selectReply(int bonum);
 }

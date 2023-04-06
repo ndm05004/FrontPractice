@@ -144,6 +144,8 @@ public class BoardDaoImpl implements IBoardDao {
 			
 			cnt = session.delete("board.deleteReply", renum);
 			
+		}catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			session.commit();
 			session.close();
@@ -162,6 +164,8 @@ public class BoardDaoImpl implements IBoardDao {
 			
 			cnt = session.update("board.updateReply", vo);
 			
+		}catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			session.commit();
 			session.close();
@@ -187,5 +191,25 @@ public class BoardDaoImpl implements IBoardDao {
 		
 		return cnt;
 	}
+
+	@Override
+	public List<ReplyVO> selectReply(int bonum) {
+	
+		SqlSession session = MybatisSqlSessionFactory.getSqlSession();
+
+		List<ReplyVO> list = null;
+		
+		try {
+			
+			list = session.selectList("board.selectReply", bonum);
+			
+		} finally {
+			session.commit();
+			session.close();
+		}
+		
+		return list;
+	}
+
 	
 }

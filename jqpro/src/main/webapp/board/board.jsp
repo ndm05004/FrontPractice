@@ -49,6 +49,15 @@ input[name=reply]{
 	margin-left : 30%;
 }
 
+.reply-body{
+	
+	background: #f1faad;
+	border : 1px solid gold;
+	margin : 1px;
+	padding: 5px;
+	
+}
+
 
 </style>
 
@@ -117,6 +126,10 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 	            alert(vidx + "번 글을 수정")
 	         }else if(vaction == "delete") {
 	            alert(vidx + "번 글을 삭제")
+	         }else if(vaction == "list"){
+	        	 //alert(vidx + "번 게시판글과 댓글을 모두 보기");
+	        	 $.replyListServer(this)
+	        	 
 	         }else if(vaction == "reply") {
 	            alert(vidx + "번 댓글을 씁니다.")
 	            			
@@ -129,9 +142,17 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 	            reply.cont = cont;
 	            reply.bonum = vidx;
 	            
-	            //서버로 전송
-	            $.replyWriteServer()
+	            $(this).prev().val("");
 	            
+	            //서버로 전송
+	            $.replyWriteServer(this);
+	            
+	            //댓글 리스트를 출력
+	            
+	         }else if(vaction == "r_modify"){
+	        	 alert(vidx+"번 댓글을 수정")
+	         }else if(vaction == "r_delete"){
+	        	 alert(vidx+"번 댓글을 삭제")
 	         }
 	         
 	      })

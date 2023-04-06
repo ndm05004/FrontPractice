@@ -2,22 +2,71 @@
  * 
  */
 
+$.replyListServer = function(target){ //target : 클릭한 등록버튼, 클릭한 제목
+	
+	$.ajax({
+		
+		url : `${mypath}/ReplyList.do`, 
+		type: 'get',
+		data : {"bonum":vidx}, //{"bonum":reply.bonum}
+		success : function(res){
+			//target : 클릭한 기준으로 출력
+			
+			rcode = "";
+			
+			
+			$.each(res, function(i,v){
+				
+				content = v.cont;
+				
+				content =  content.replaceAll(/\n/g, "<br>");
+				
+				rcode+=`<div class="reply-body">
+				        	<p class="p1">
+								작성자<span id="rwr">${v.name}</span>&nbsp;&nbsp;&nbsp;				
+								날짜<span id="rda">${v.redate}</span>	&nbsp;&nbsp;&nbsp;				
+				        	</p>
+				        	<p class="p2">
+				        	    <input type="button" idx="${v.renum}" name="r_delete" class="action" value="댓글삭제">
+				        		<input type="button"  idx="${v.renum}" name="r_modify" class="action" value="댓글수정">
+				        	</p>
+				        	<p class="p3">
+				        		${content}
+				        	</p>
 
-$.replyWriteServer = function() {
+				        </div>`
+				        
+			}) //$.each
+			
+			$(target).parents('.card').find('.reply-body').remove();
+			$(target).parents('.card').find('.card-body').append(rcode);
+			
+		}, //success
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json' 
+	})// ajax
+	
+	
+} //replyListServer
+
+
+$.replyWriteServer = function(re) {
 	  $.ajax({
-      url: `${mypath}/ReplyWrite.do`, 
+      	 url: `${mypath}/ReplyWrite.do`, 
          type: 'post',
          data : reply,
-         success : function(re){
+         success : function(res){
 			 // 저장성공
-			 
-			 
-			 // 댓글 내용을 출력
-			 $(re)
+			 if(res.flag == "okay"){
+			 // 댓글 내용을 출력 - 등록버튼(re)기준으로 출력
+				$.replyListServer(re); 
+			 }
 			 
 		 },
 		 error : function(xhr){
-			 
+			 alert("상태 : " + xhr.status);
 		 },
 		 dataType : 'json'
 	})
@@ -71,7 +120,7 @@ $.listPageServer = function(cpage){
 					content =  content.replaceAll(/\n/g, "<br>");					
 					 code += `<div class="card">
 				      <div class="card-header">
-				        <a class="btn" data-bs-toggle="collapse" href="#collapse${v.num}">
+				        <a class="btn action" idx="${v.num}" name="list" data-bs-toggle="collapse" href="#collapse${v.num}">
 				        ${v.subject}
 				        </a>
 				      </div>

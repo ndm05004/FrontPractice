@@ -50,9 +50,21 @@
 </select>	
 
 <!-- 댓글 쓰기 -->
+<insert id="insertReply" parameterType="replyVo">
+	insert into replytab
+	values(replytab_renum_seq.nextval, 
+			#{bonum}, 
+			#{name}, 
+			#{cont}, 
+			sysdate
+		)
+</insert>
 
-
-
+<select id="selectReply" resultType="replyVo" parameterType="int">
+	
+	select * from replytab where bonum=#{data}
+	
+</select>
 
 	
 </mapper>
