@@ -29,6 +29,13 @@
 			 #{wip}, sysdate
 	)
 </insert>
+
+<delete id="deleteBoard" parameterType="int">
+
+	delete from boardtab where num = #{data}
+
+</delete>
+
 	
 <!-- 전체 글 갯수 구하기 -->
 <select id="totalCount" parameterType="map" resultType="int">
@@ -66,6 +73,13 @@
 	
 </select>
 
+<delete id="deleteReply" parameterType="int">
+	delete from replytab where renum = #{data}
+</delete>
+
+<update id="updateReply" parameterType="replyVo">
+	update replytab set cont=#{cont} where renum = #{renum}
+</update>
 	
 </mapper>
 

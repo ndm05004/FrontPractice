@@ -76,6 +76,14 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 		//이벤트
 		//페이지 번호 클릭
 		$(document).on('click', '.pageno', function(){
+			
+			
+       	 if($('#modifyform').css('display') != 'none'){
+    		 // 열려 있다.
+    		 replyReset();
+    		 
+    	 }
+			
 			currentPage= $(this).text().trim();
 			$.listPageServer(currentPage)
 		})
@@ -83,6 +91,13 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 		
 		//다음클릭
 		$(document).on('click', '#next', function(){
+			
+       	 if($('#modifyform').css('display') != 'none'){
+    		 // 열려 있다.
+    		 replyReset();
+    		 
+    	 }
+			
 			currentPage = parseInt($('.pageno').last().text())+1
 			$.listPageServer(currentPage)
 		})
@@ -90,8 +105,16 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 		
 		//이전클릭
 		$(document).on('click', '#prev', function(){
+			
+       	 if($('#modifyform').css('display') != 'none'){
+    		 // 열려 있다.
+    		 replyReset();
+    		 
+    	 }
+			
 			currentPage = parseInt($('.pageno').first().text())-1
 			$.listPageServer(currentPage)
+			
 		})
 				
 		
@@ -118,6 +141,12 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 		
 	      //수정 삭제 등록 댓글수정 댓글삭제 -- 이벤트
 	      $(document).on('click','.action', function(){
+	    	  
+	    	  if($('#modifyform').css('display') != 'none'){
+	        		// 열려 있다.
+	        		replyReset(); 
+	        	 }
+	    	  
 	         
 	         vaction = $(this).attr('name');
 	         vidx = $(this).attr('idx');
@@ -126,6 +155,9 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 	            alert(vidx + "번 글을 수정")
 	         }else if(vaction == "delete") {
 	            alert(vidx + "번 글을 삭제")
+	            
+	            $.boardDeleteServer();
+	            
 	         }else if(vaction == "list"){
 	        	 //alert(vidx + "번 게시판글과 댓글을 모두 보기");
 	        	 $.replyListServer(this)
@@ -150,12 +182,84 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 	            //댓글 리스트를 출력
 	            
 	         }else if(vaction == "r_modify"){
-	        	 alert(vidx+"번 댓글을 수정")
+	        	 //alert(vidx+"번 댓글을 수정")
+	        	 
+	        	 // modifyform이 열려 있는지 비교
+	        	 if($('#modifyform').css('display') != 'none'){
+	        		 // 열려 있다.
+	        		 replyReset();
+	        		 
+	        	 }
+	        	 
+
+	             //수정할 내용 (원래 내용)을 가져온다
+	             modifycont = $(this).parents('.reply-body').find('.p3').html().trim();
+	             
+	             //원래 내용의 <br>태그를 \n으로 변경 - modifyform (수정폼)에 출력
+	             mcont = modifycont.replace(/<br>/g, "\n");
+	             $('#modifyform textarea').val(mcont);
+	             
+	             //수정폼을 p3으로 이동
+	             $(this).parents('.reply-body').find('.p3').empty().append($('#modifyform'));
+	             
+	             //수정폼을 보이기
+	             //$('#modifyform').css('display', 'block')         
+	             $('#modifyform').show();
+	        	 
+	        	 
 	         }else if(vaction == "r_delete"){
-	        	 alert(vidx+"번 댓글을 삭제")
+	        	 //alert(vidx+"번 댓글을 삭제")
+	        	 $.deleteReplyServer(this);
 	         }
 	         
 	      })
+			
+	      replyReset = function(){
+			
+			//p3을 찾는다
+			vp3 = $('#modifyform').parent();
+			
+			//수정폼을 body로 이동
+			$('body').append($('#modifyform'));
+			$('#modifyform').hide();
+			
+			//원래내용을 p3으로 다시 출력
+			$(vp3).html(modifycont);
+			
+			
+		}
+
+		//댓글 수정창에서 확인버튼
+	      $('#btnok').on('click',function(){
+	         
+	         //입력한 내용을 가져온다. - 엔터기호가 포함
+	         modicont = $('#modifyform textarea').val();
+	         
+	         //엔터기호를 <br>태그로 변경
+	         modiout = modicont.replace(/\n/g, "<br>");
+	         
+	         //p3을 찾는다.
+	         //vp3 = $(this).parents($('.p3'));
+	         vp3 = $('#modifyform').parent();
+	         
+	         //modigyform을 body로 이동 - 안 보이도록 설정
+	         $('#modifyform').appendTo($('body'));
+	         $('#modifyform').hide();
+	         
+	         //p3에 입력한 내용(<br>태그로 변경한)을 출력 - DB수정 후
+	         //$(vp3).html(modiout);
+	         
+	         reply.cont = modicont;
+	         reply.renum = vidx;
+	         $.replyUpdateServer();
+	         
+	      })
+	      
+	      //댓글 수정창에서 취소버튼
+	      $('#btnreset').on('click',function(){
+	         
+	      })
+		
 
 	      
 	   })
@@ -184,11 +288,23 @@ reply = { }; //동적으로 속성과 기능을 추가할 수 있다. reply.name
 		height: 30px;
 	}
 	
+	#modifyform{
+		display: none;
+	}
+	
 </style>
 
 </head>
 <body>
 
+<div id="modifyform">
+	<textarea rows="5" cols="50"></textarea>
+	
+	<input type="button" value="확인" id="btnok">
+	<input type="button" value="취소" id="btnreset">
+	
+</div>
+ 
 	<input input="button" value="글쓰기" id="write" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#wModal">
 	<br><br>
 	

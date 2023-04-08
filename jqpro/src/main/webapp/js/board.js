@@ -2,6 +2,72 @@
  * 
  */
 
+
+ $.boardDeleteServer = function(){
+	 
+	 $.ajax({
+		 
+		 url : `${mypath}/BoardDelete.do`,
+		 type : 'get',
+		 data : {"bonum":vidx},
+		 success : function(res){
+			 alert(res.flag)
+			 currentPage =1;
+			 $.listPageServer(1);
+		 },
+		 error: function(xhr){
+			 alert("상태 : "+xhr.status) 
+		 },
+		 dataType: 'json'		 
+		 
+	 })
+	 
+	 
+ }
+
+
+ $.replyUpdateServer = function(){
+	 
+	 $.ajax({
+		 url: `${mypath}/ReplyUpdate.do`,
+		 type: 'post',
+		 data : reply, // reply객체 - cont, renum
+		 success : function(res){
+			 $(vp3).html(modiout);
+		 },
+		 error : function(xhr){
+			 alert("상태 : " + xhr.status)
+		 },
+		 dataType : 'json'
+	 })
+	 
+ }
+
+
+$.deleteReplyServer = function(target){ //target : 클릭한 등록버튼, 클릭한 제목
+
+	$.ajax({
+		
+		url : `${mypath}/ReplyDelete.do`,
+		type : 'get',
+		data : {"renum":vidx},
+		success : function(res){
+			if(res.flag == "okay"){
+				$(target).parents('.reply-body').remove()
+			}
+		},
+		error : function(xhr){
+			alert(xhr.status);	
+		},
+		dataType : 'json'
+		
+	})
+	
+}
+
+
+
+
 $.replyListServer = function(target){ //target : 클릭한 등록버튼, 클릭한 제목
 	
 	$.ajax({
